@@ -7,5 +7,10 @@
 }
 
 .FancySelect__Option {
+  font-size: 50%;
   cursor: pointer;
+}
+
+.FancySelect__Option--active {
+  font-size: 100%;
 }
