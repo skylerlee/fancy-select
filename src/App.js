@@ -18,6 +18,8 @@ function App() {
             />
           }
           placeholder="Please input time"
+          min={0}
+          max={30}
           size="large"
         />
       </article>
