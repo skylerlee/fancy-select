@@ -20,7 +20,7 @@ function FancySelect(props) {
       step = -1;
     }
     const currentIdx = options.findIndex((opt) => opt.value === value);
-    const nextIdx = (currentIdx + step) % options.length;
+    const nextIdx = (currentIdx + step + options.length) % options.length;
     const nextOpt = options[nextIdx];
     onChange(nextOpt?.value);
   };
