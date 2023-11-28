@@ -5,7 +5,11 @@ function App() {
   return (
     <div className="App">
       <p>
-        <FancySelect />
+        <FancySelect options={[
+          { label: 'Year', value: 'y' },
+          { label: 'Month', value: 'm' },
+          { label: 'Day', value: 'd' },
+        ]} />
       </p>
     </div>
   );
