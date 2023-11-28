@@ -8,6 +8,7 @@ function App() {
       <h3>Experimental Select Component</h3>
       <article>
         <InputNumber
+          prefixCls="FancySelectGroup"
           addonBefore={
             <FancySelect
               options={[

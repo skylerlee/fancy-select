@@ -1,3 +1,11 @@
 .FancySelect {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+.FancySelectGroup-group-addon {
+  background-color: #ffffff !important;
+}
+
+.FancySelect__Option {
+  cursor: pointer;
 }
