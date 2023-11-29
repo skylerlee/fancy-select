@@ -1,9 +1,14 @@
 .FancySelect {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
 }
 
 .FancySelectGroup-group-addon {
   background-color: #ffffff !important;
+  min-width: 8em;
 }
 
 .FancySelect__Option {
