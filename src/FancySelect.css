@@ -1,5 +1,9 @@
 .FancySelect {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   font-size: 16px;
 }
 
@@ -12,11 +16,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 50%;
   cursor: pointer;
 }
 
-.FancySelect__Option--active {
+.FancySelect__Option.active {
   font-size: 100%;
 }
