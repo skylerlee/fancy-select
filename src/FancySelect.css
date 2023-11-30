@@ -17,10 +17,13 @@
   top: 50%;
   left: 50%;
   width: 4em;
+  color: #999999;
   font-size: 75%;
   cursor: pointer;
+  transition: all ease-in-out 300ms;
 }
 
 .FancySelect__Option.active {
+  color: #333333;
   font-size: 100%;
 }
