@@ -13,16 +13,14 @@
   align-items: center;
   background-color: #ffffff;
   color: #333333;
-  width: 3em;
-  height: 3em;
+  top: 50%;
+  left: 50%;
   padding: 20px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
 
 .RingSelect__Value {
-  top: 50%;
-  left: 50%;
   width: 4em;
   height: 4em;
 }

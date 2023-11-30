@@ -9,6 +9,7 @@ function RingSelect(props) {
 
   const current = options.find((opt) => opt.value === value);
   const anglePerOption = (2 * Math.PI) / (options.length - 1);
+  const radius = 135;
 
   const getArcX = (angle, r) => {
     return Math.sin(angle) * r;
@@ -19,11 +20,11 @@ function RingSelect(props) {
   };
 
   const getX = (idx) => {
-    return getArcX(idx * anglePerOption, 100);
+    return getArcX(idx * anglePerOption, radius);
   };
 
   const getY = (idx) => {
-    return getArcY(idx * anglePerOption, 100);
+    return getArcY(idx * anglePerOption, radius);
   };
 
   const handleItemClick = (e, idx, opt) => {
