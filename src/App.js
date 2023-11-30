@@ -13,8 +13,10 @@ function App() {
             <FancySelect
               options={[
                 { label: 'Year', value: 'y' },
-                { label: 'Month', value: 'm' },
+                { label: 'Month', value: 'M' },
                 { label: 'Day', value: 'd' },
+                { label: 'Hour', value: 'h' },
+                { label: 'Minute', value: 'm' },
               ]}
             />
           }

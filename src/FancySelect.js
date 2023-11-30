@@ -5,6 +5,21 @@ function FancySelect(props) {
   const { options = [] } = props;
   const [value = options[0]?.value, onChange] = useControllableValue(props);
 
+  const activeIdx = options.findIndex((opt) => opt.value === value);
+
+  const getOffset = (idx) => {
+    const offset = idx - activeIdx;
+    const halfLength = Math.floor((options.length - 1) / 2);
+    if (Math.abs(offset) > halfLength) {
+      if (offset > 0) {
+        return offset - options.length;
+      } else {
+        return offset + options.length;
+      }
+    }
+    return offset;
+  };
+
   const handleItemClick = (e, idx, opt) => {
     if (opt !== undefined) {
       onChange(opt.value);
@@ -31,6 +46,7 @@ function FancySelect(props) {
         <div
           key={opt.value}
           className={`FancySelect__Option${opt.value === value ? '--active' : ''}`}
+          style={{ transform: `translateX(${getOffset(idx) * 100}%)` }}
           onClick={(e) => handleItemClick(e, idx, options[idx])}
         >
           {opt.label}
