@@ -1,3 +1,4 @@
+import React from 'react';
 import { useControllableValue } from 'ahooks';
 import './FancySelect.css';
 
