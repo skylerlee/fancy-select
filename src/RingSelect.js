@@ -5,9 +5,14 @@ import './RingSelect.css';
 function RingSelect(props) {
   const { options = [] } = props;
   const [value = options[0]?.value, onChange] = useControllableValue(props);
-  const [active, setActive] = useState(false);
+  const [inCore, setInCore] = useState(false);
+  const [inStar, setInStar] = useState(false);
+  const [inMask, setInMask] = useState(false);
 
   const current = options.find((opt) => opt.value === value);
+
+  const active = inCore || inStar || inMask;
+
   const anglePerOption = (2 * Math.PI) / (options.length - 1);
   const phase = 0.12;
   const radius = 135;
@@ -36,7 +41,7 @@ function RingSelect(props) {
 
   return (
     <div className="RingSelect">
-      <div className="RingSelect__Value" onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)}>
+      <div className="RingSelect__Value" onMouseEnter={() => setInCore(true)} onMouseLeave={() => setInCore(false)}>
         {current?.label}
       </div>
       {options
@@ -49,11 +54,15 @@ function RingSelect(props) {
               transform: active ? `translate(${getX(idx) - 50}%, ${getY(idx) - 50}%)` : 'translate(-50%, -50%)',
             }}
             onClick={(e) => handleItemClick(e, idx, options[idx])}
+            onMouseEnter={() => setInStar(true)}
+            onMouseLeave={() => setInStar(false)}
           >
             {opt.label}
           </div>
         ))}
-        {active ? <div className="RingSelect__Mask" /> : null}
+      {active ? (
+        <div className="RingSelect__Mask" onMouseEnter={() => setInMask(true)} onMouseLeave={() => setInMask(false)} />
+      ) : null}
     </div>
   );
 }
