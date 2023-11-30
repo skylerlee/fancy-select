@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useControllableValue } from 'ahooks';
 import './RingSelect.css';
 
 function RingSelect(props) {
   const { options = [] } = props;
   const [value = options[0]?.value, onChange] = useControllableValue(props);
+  const [active, setActive] = useState(false);
 
   const current = options.find((opt) => opt.value === value);
 
@@ -16,10 +17,16 @@ function RingSelect(props) {
 
   return (
     <div className="RingSelect">
-      <div className="RingSelect__Value">{current?.label}</div>
+      <div className="RingSelect__Value" onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)}>
+        {current?.label}
+      </div>
       {options.map((opt, idx) =>
         opt.value !== value ? (
-          <div key={opt.value} className="RingSelect__Option" onClick={(e) => handleItemClick(e, idx, options[idx])}>
+          <div
+            key={opt.value}
+            className={`RingSelect__Option${active ? ' active' : ''}`}
+            onClick={(e) => handleItemClick(e, idx, options[idx])}
+          >
             {opt.label}
           </div>
         ) : null,

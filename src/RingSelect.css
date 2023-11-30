@@ -30,4 +30,10 @@
 .RingSelect__Option {
   width: 2em;
   height: 2em;
+  opacity: 0;
+  transition: all ease-out 300ms;
+}
+
+.RingSelect__Option.active {
+  opacity: 1;
 }
