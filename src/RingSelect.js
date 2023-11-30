@@ -53,7 +53,7 @@ function RingSelect(props) {
             style={{
               transform: active ? `translate(${getX(idx) - 50}%, ${getY(idx) - 50}%)` : 'translate(-50%, -50%)',
             }}
-            onClick={(e) => handleItemClick(e, idx, options[idx])}
+            onClick={(e) => handleItemClick(e, idx, opt)}
             onMouseEnter={() => setInStar(true)}
             onMouseLeave={() => setInStar(false)}
           >

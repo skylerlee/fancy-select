@@ -48,7 +48,7 @@ function FancySelect(props) {
           key={opt.value}
           className={`FancySelect__Option${opt.value === value ? ' active' : ''}`}
           style={{ transform: `translate(${getOffset(idx) * 100 - 50}%, -50%)` }}
-          onClick={(e) => handleItemClick(e, idx, options[idx])}
+          onClick={(e) => handleItemClick(e, idx, opt)}
         >
           {opt.label}
         </div>
