@@ -6,6 +6,8 @@ function RingSelect(props) {
   const { options = [] } = props;
   const [value = options[0]?.value, onChange] = useControllableValue(props);
 
+  const current = options.find((opt) => opt.value === value);
+
   const handleItemClick = (e, idx, opt) => {
     if (opt !== undefined) {
       onChange(opt.value);
@@ -14,15 +16,14 @@ function RingSelect(props) {
 
   return (
     <div className="RingSelect">
-      {options.map((opt, idx) => (
-        <div
-          key={opt.value}
-          className={`RingSelect__Option${opt.value === value ? ' active' : ''}`}
-          onClick={(e) => handleItemClick(e, idx, options[idx])}
-        >
-          {opt.label}
-        </div>
-      ))}
+      <div className="RingSelect__Value">{current?.label}</div>
+      {options.map((opt, idx) =>
+        opt.value !== value ? (
+          <div key={opt.value} className="RingSelect__Option" onClick={(e) => handleItemClick(e, idx, options[idx])}>
+            {opt.label}
+          </div>
+        ) : null,
+      )}
     </div>
   );
 }
