@@ -53,6 +53,7 @@ function RingSelect(props) {
             {opt.label}
           </div>
         ))}
+        {active ? <div className="RingSelect__Mask" /> : null}
     </div>
   );
 }
