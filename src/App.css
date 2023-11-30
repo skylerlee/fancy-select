@@ -12,3 +12,11 @@
   margin-top: 2.5em;
   margin-bottom: 2.5em;
 }
+
+.App article {
+  margin-bottom: 15vh;
+}
+
+.App article:last-child {
+  margin-bottom: 0;
+}
