@@ -23,6 +23,7 @@
 .RingSelect__Value {
   width: 4em;
   height: 4em;
+  z-index: 2;
 }
 
 .RingSelect__Option {
@@ -30,6 +31,7 @@
   height: 2em;
   opacity: 0;
   transition: all ease-out 300ms;
+  z-index: 1;
 }
 
 .RingSelect__Option.active {

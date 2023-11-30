@@ -44,7 +44,9 @@ function RingSelect(props) {
           <div
             key={opt.value}
             className={`RingSelect__Option${active ? ' active' : ''}`}
-            style={{ transform: `translate(${getX(idx) - 50}%, ${getY(idx) - 50}%)` }}
+            style={{
+              transform: active ? `translate(${getX(idx) - 50}%, ${getY(idx) - 50}%)` : 'translate(-50%, -50%)',
+            }}
             onClick={(e) => handleItemClick(e, idx, options[idx])}
           >
             {opt.label}
