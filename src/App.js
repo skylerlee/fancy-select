@@ -15,8 +15,8 @@ function App() {
                 { label: 'Year', value: 'y' },
                 { label: 'Month', value: 'M' },
                 { label: 'Day', value: 'd' },
-                { label: 'Hour', value: 'h' },
-                { label: 'Minute', value: 'm' },
+                // { label: 'Hour', value: 'h' },
+                // { label: 'Minute', value: 'm' },
               ]}
             />
           }
