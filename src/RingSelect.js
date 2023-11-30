@@ -8,6 +8,23 @@ function RingSelect(props) {
   const [active, setActive] = useState(false);
 
   const current = options.find((opt) => opt.value === value);
+  const anglePerOption = (2 * Math.PI) / (options.length - 1);
+
+  const getArcX = (angle, r) => {
+    return Math.sin(angle) * r;
+  };
+
+  const getArcY = (angle, r) => {
+    return Math.cos(angle) * r;
+  };
+
+  const getX = (idx) => {
+    return getArcX(idx * anglePerOption, 100);
+  };
+
+  const getY = (idx) => {
+    return getArcY(idx * anglePerOption, 100);
+  };
 
   const handleItemClick = (e, idx, opt) => {
     if (opt !== undefined) {
@@ -20,17 +37,18 @@ function RingSelect(props) {
       <div className="RingSelect__Value" onMouseEnter={() => setActive(true)} onMouseLeave={() => setActive(false)}>
         {current?.label}
       </div>
-      {options.map((opt, idx) =>
-        opt.value !== value ? (
+      {options
+        .filter((opt) => opt.value !== value)
+        .map((opt, idx) => (
           <div
             key={opt.value}
             className={`RingSelect__Option${active ? ' active' : ''}`}
+            style={{ transform: `translate(${getX(idx) - 50}%, ${getY(idx) - 50}%)` }}
             onClick={(e) => handleItemClick(e, idx, options[idx])}
           >
             {opt.label}
           </div>
-        ) : null,
-      )}
+        ))}
     </div>
   );
 }
