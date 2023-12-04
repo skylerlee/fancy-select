@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useControllableValue } from 'ahooks';
 import './FancySelect.css';
 
 function FancySelect(props) {
   const { options = [] } = props;
   const [value = options[0]?.value, onChange] = useControllableValue(props);
+  const startX = useRef();
 
   const activeIdx = options.findIndex((opt) => opt.value === value);
   const offsetRatio = 0.9;
@@ -28,8 +29,31 @@ function FancySelect(props) {
     }
   };
 
+  const handleTouchStart = (e) => {
+    const x = e.targetTouches[0]?.pageX;
+    startX.current = x;
+  };
+
+  const handleTouchMove = (e) => {
+    const x = e.targetTouches[0]?.pageX;
+    const x0 = startX.current;
+    if (x !== undefined && x0 !== undefined) {
+      const offsetX = x0 - x;
+      const ratio = offsetX / 60;
+      scroll(ratio);
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    startX.current = undefined;
+  };
+
   const handleWheel = (e) => {
     const ratio = e.deltaY / 100;
+    scroll(ratio);
+  };
+
+  const scroll = (ratio) => {
     let step = 0;
     if (ratio > 1) {
       step = 1;
@@ -43,7 +67,13 @@ function FancySelect(props) {
   };
 
   return (
-    <div className="FancySelect" onWheel={handleWheel}>
+    <div
+      className="FancySelect"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onWheel={handleWheel}
+    >
       {options.map((opt, idx) => (
         <div
           key={opt.value}
