@@ -6,6 +6,7 @@ function FancySelect(props) {
   const { options = [] } = props;
   const [value = options[0]?.value, onChange] = useControllableValue(props);
   const startX = useRef();
+  const endX = useRef();
 
   const activeIdx = options.findIndex((opt) => opt.value === value);
   const offsetRatio = 0.9;
@@ -36,15 +37,17 @@ function FancySelect(props) {
 
   const handleTouchMove = (e) => {
     const x = e.targetTouches[0]?.pageX;
-    const x0 = startX.current;
-    if (x !== undefined && x0 !== undefined) {
-      const offsetX = x0 - x;
-      const ratio = offsetX / 60;
-      scroll(ratio);
-    }
+    endX.current = x;
   };
 
   const handleTouchEnd = (e) => {
+    const x0 = startX.current;
+    const x1 = endX.current;
+    if (x0 !== undefined && x1 !== undefined) {
+      const offsetX = x1 - x0;
+      const ratio = -offsetX / 60;
+      scroll(ratio);
+    }
     startX.current = undefined;
   };
 
