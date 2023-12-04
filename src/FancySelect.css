@@ -7,6 +7,27 @@
   font-size: 16px;
 }
 
+.FancySelect::before,
+.FancySelect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12.5%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.FancySelect::before {
+  left: 0;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.FancySelect::after {
+  right: 0;
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
 .FancySelectGroup-group-addon {
   background-color: #ffffff !important;
   min-width: 7.5em;
@@ -22,6 +43,7 @@
   font-size: 75%;
   cursor: pointer;
   transition: all ease-in-out 300ms;
+  z-index: 0;
 }
 
 .FancySelect__Option.active {
