@@ -9,7 +9,8 @@
 
 .FancySelectGroup-group-addon {
   background-color: #ffffff !important;
-  min-width: 12em;
+  min-width: 7.5em;
+  overflow-x: hidden;
 }
 
 .FancySelect__Option {
