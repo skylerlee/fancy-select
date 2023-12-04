@@ -7,6 +7,7 @@ function FancySelect(props) {
   const [value = options[0]?.value, onChange] = useControllableValue(props);
 
   const activeIdx = options.findIndex((opt) => opt.value === value);
+  const offsetRatio = 0.9;
 
   const getOffset = (idx) => {
     const offset = idx - activeIdx;
@@ -47,7 +48,7 @@ function FancySelect(props) {
         <div
           key={opt.value}
           className={`FancySelect__Option${opt.value === value ? ' active' : ''}`}
-          style={{ transform: `translate(${getOffset(idx) * 100 - 50}%, -50%)` }}
+          style={{ transform: `translate(${getOffset(idx) * offsetRatio * 100 - 50}%, -50%)` }}
           onClick={(e) => handleItemClick(e, idx, opt)}
         >
           {opt.label}
